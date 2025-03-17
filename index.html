@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript</title>
+
+  <link rel="stylesheet" href="app/assets/style.css" />
+</head>
+
+<body>
+  <!-- header -->
+  <header class="header">
+    <h1>Ejercicios del Dom</h1>
+  </header>
+  <!--Button hamburger-->
+  <button class="flex-col-center panel-btn hamburger hamburger--vortex" type="button">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
+  <!--Panel Menu-->
+  <aside class="panel">
+    <nav class="menu flex-col-space-evenly">
+      <a href="#section1">Reloj Digital y Alarmar Sonora</a>
+      <a href="#section2">Eventos del teclado</a>
+      <a href="#section3">Section 3</a>
+      <a href="#section4">Section 4</a>
+      <a href="#section5">Responsive con JavaScript</a>
+      <a href="#section6">Optimización Móvil con Vanilla JS</a>
+    </nav>
+  </aside>
+
+  <!--Main-->
+  <main>
+    <section id="section1" class="section">
+      <h2>Reloj Digital y Alarmar Sonora</h2>
+      <div>
+        <button id="activar-reloj" class="btn-clock">Iniciar Reloj</button>
+        <button class="btn-clock" id="desactivar-reloj">Detener Reloj</button>
+        <button class="btn-clock" id="activar-alarma">Iniciar Alarma</button>
+        <button class="btn-clock" id="desactivar-alarma">
+          Detener Alarma
+        </button>
+      </div>
+      <div class="reloj" id="reloj"></div>
+    </section>
+    <section id="section2" class="section">
+      <h2>Eventos Del Teclado</h2>
+      <article class="stage">
+        <div class="ball"></div>
+      </article>
+    </section>
+    <section id="section3" class="section">
+      <h2>Section 3</h2>
+    </section>
+    <section id="section4" class="section">
+      <h2>Section 4</h2>
+    </section>
+    <section id="section5" class="section">
+      <h2>Responsive con JavaScript</h2>
+      <div id="youtube"></div>
+      <div id="gmaps"></div>
+    </section>
+    <section id="section6" class="section">
+      <div id="optimizacion"></div>
+      <img id="responsive-image" src="" alt="Cargando imagen..." />
+    </section>
+  </main>
+
+  <script type="module" src="app/index.js"></script>
+</body>
+
+</html>

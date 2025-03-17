@@ -1,0 +1,487 @@
+/* Declaramos el orden de las capas para controlar la cascada */
+@layer variables, reset, base, layout, helpers, hamburger, components;
+
+/* 1️⃣ Variables globales */
+@layer variables {
+  :root {
+    --background-dark: #121212;
+    --text-dark: #e0e0e0;
+    --main-font: "Arial", sans-serif;
+    --font-size: 16px;
+    --main-color: #f7df1e;
+    --secund-color: #222;
+    --main-modal-color: rgba(247, 222, 30, 0.85);
+    --secund-modal-color: rgba(34, 34, 34, 0.85);
+    --container-width: 1200px;
+  }
+}
+
+/* 2️⃣ Reset CSS (Normalización y correcciones globales) */
+@layer reset {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
+    touch-action: manipulation;
+  }
+
+  html {
+    line-height: 1.2;
+    -webkit-text-size-adjust: 100%;
+    font-family: var(--main-font);
+    font-size: var(--font-size);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100dvh;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    user-select: none;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button,
+  [type="button"],
+  [type="submit"],
+  [type="reset"] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    touch-action: manipulation;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: var(--background-dark);
+      color: var(--text-dark);
+    }
+  }
+}
+
+/* 3️⃣ Base (Estilos generales del sitio) */
+@layer base {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  fieldset {
+    padding: 0;
+    border: none;
+  }
+
+  legend {
+    display: table;
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+}
+
+/* 4️⃣ Layout (Clases de estructura y flexbox) */
+@layer layout {
+
+  .flex-row,
+  .flex-col,
+  .flex-center,
+  .flex-col-center,
+  .flex-col-space-evenly {
+    display: flex;
+  }
+
+  .flex-row {
+    flex-direction: row;
+  }
+
+  .flex-col {
+    flex-direction: column;
+  }
+
+  .flex-center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flex-col-center {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flex-col-space-evenly {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+}
+
+/* 5️⃣ Helpers (Utilidades pequeñas y espaciados) */
+@layer helpers {
+  .flex-grow {
+    flex-grow: 1;
+  }
+
+  .flex-shrink {
+    flex-shrink: 1;
+  }
+
+  .gap-sm {
+    gap: 0.5rem;
+  }
+
+  .gap-md {
+    gap: 1rem;
+  }
+
+  .gap-lg {
+    gap: 2rem;
+  }
+}
+
+@layer hamburger {
+
+  /* Clases base */
+  .hamburger {
+    font: inherit;
+    display: inline-block;
+    overflow: visible;
+    margin: 0;
+    padding: 15px;
+    cursor: pointer;
+    transition-timing-function: linear;
+    transition-duration: 0.15s;
+    transition-property: opacity, filter;
+    text-transform: none;
+    color: inherit;
+    border: 0;
+    background-color: transparent;
+  }
+
+  .hamburger-box {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+  }
+
+  .hamburger-inner {
+    top: 50%;
+    display: block;
+    margin-top: -2px;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    position: absolute;
+    width: 40px;
+    height: 4px;
+    transition-timing-function: ease;
+    transition-duration: 0.15s;
+    transition-property: transform;
+    border-radius: 4px;
+    background-color: #000;
+  }
+
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    display: block;
+    content: "";
+  }
+
+  .hamburger-inner::before {
+    top: -10px;
+  }
+
+  .hamburger-inner::after {
+    bottom: -10px;
+  }
+
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: #000;
+  }
+
+  /* Hamburguesa Vortex */
+  .hamburger--vortex .hamburger-inner {
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    transition-duration: 0.2s;
+  }
+
+  .hamburger--vortex .hamburger-inner::before,
+  .hamburger--vortex .hamburger-inner::after {
+    transition-delay: 0.1s;
+    transition-timing-function: linear;
+    transition-duration: 0s;
+  }
+
+  .hamburger--vortex .hamburger-inner::before {
+    transition-property: top, opacity;
+  }
+
+  .hamburger--vortex .hamburger-inner::after {
+    transition-property: bottom, transform;
+  }
+
+  .hamburger--vortex.is-active .hamburger-inner {
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    transform: rotate(765deg);
+  }
+
+  .hamburger--vortex.is-active .hamburger-inner::before {
+    top: 0;
+    opacity: 0;
+  }
+
+  .hamburger--vortex.is-active .hamburger-inner::after {
+    bottom: 0;
+    transform: rotate(90deg);
+  }
+
+  /* Hamburguesa Vortex (reversa) */
+  .hamburger--vortex-r .hamburger-inner {
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    transition-duration: 0.2s;
+  }
+
+  .hamburger--vortex-r .hamburger-inner::before,
+  .hamburger--vortex-r .hamburger-inner::after {
+    transition-delay: 0.1s;
+    transition-timing-function: linear;
+    transition-duration: 0s;
+  }
+
+  .hamburger--vortex-r .hamburger-inner::before {
+    transition-property: top, opacity;
+  }
+
+  .hamburger--vortex-r .hamburger-inner::after {
+    transition-property: bottom, transform;
+  }
+
+  .hamburger--vortex-r.is-active .hamburger-inner {
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    transform: rotate(-765deg);
+  }
+
+  .hamburger--vortex-r.is-active .hamburger-inner::before {
+    top: 0;
+    opacity: 0;
+  }
+
+  .hamburger--vortex-r.is-active .hamburger-inner::after {
+    bottom: 0;
+    transform: rotate(-90deg);
+  }
+}
+
+/* 6️⃣ Componentes reutilizables */
+@layer components {
+
+  /* Header */
+  .header {
+    position: sticky;
+    top: 0;
+    padding: 1rem;
+    background-color: var(--main-color);
+    color: var(--secund-color);
+  }
+
+  .header h1 {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Secciones */
+  .section {
+    padding: 2rem;
+    padding-top: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: var(--container-width);
+    min-height: 100dvh;
+    text-align: center;
+  }
+
+  /* Paneles */
+  .panel {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: var(--secund-modal-color);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+
+  /* Botón panel */
+  .panel-btn {
+    position: fixed;
+    z-index: 2;
+    bottom: 1dvh;
+    right: 1dvh;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: var(--main-color) !important;
+  }
+
+  /* Menú hamburguesa */
+  .hamburger {
+    display: inline-flex !important;
+  }
+
+  .menu {
+    width: inherit;
+    text-align: center;
+  }
+
+  .menu a {
+    padding: 2rem;
+    width: inherit;
+    display: block;
+    font-size: 1.5rem;
+    color: var(--main-color);
+    transition: all 0.3s ease;
+  }
+
+  .menu a:hover {
+    font-weight: bold;
+    color: var(--secund-color);
+    background-color: var(--main-modal-color);
+  }
+
+  /* Reloj */
+  .reloj {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .btn-clock {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: var(--secund-color);
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-clock:hover {
+    background-color: var(--main-modal-color);
+  }
+
+  .lazyload {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .lazyload.loaded {
+    opacity: 1;
+  }
+
+  .is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /*Eventos del teclado*/
+  .stage {
+
+    display: flex;
+    min-height: 50dvh;
+    background-color: var(--secund-color);
+
+  }
+
+  .ball {
+    margin: auto;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: var(--main-color);
+  }
+
+}
