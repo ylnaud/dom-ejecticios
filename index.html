@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html data-dark="true">
 <html lang="en">
 
 <head>
@@ -25,7 +25,7 @@
     <nav class="menu flex-col-space-evenly">
       <a href="#section1">Reloj Digital y Alarmar Sonora</a>
       <a href="#section2">Eventos del teclado</a>
-      <a href="#section3">Section 3</a>
+      <a href="#section3">Cuenta Regresiva</a>
       <a href="#section4">Section 4</a>
       <a href="#section5">Responsive con JavaScript</a>
       <a href="#section6">Optimización Móvil con Vanilla JS</a>
@@ -53,7 +53,8 @@
       </article>
     </section>
     <section id="section3" class="section">
-      <h2>Section 3</h2>
+      <h2>Cuenta Regresiva</h2>
+      <div id="countdown"></div>
     </section>
     <section id="section4" class="section">
       <h2>Section 4</h2>
@@ -68,6 +69,10 @@
       <img id="responsive-image" src="" alt="Cargando imagen..." />
     </section>
   </main>
+  <button id="scroll" class="scroll-top-btn hidden">&#11014</button>
+  <button class="dark-mode dark-theme-btn ">
+    <img src="app/assets/gafas.svg" alt="sol" />
+  </button>
 
   <script type="module" src="app/index.js"></script>
 </body>

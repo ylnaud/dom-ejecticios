@@ -1,7 +1,10 @@
+import { scrollBtnTop } from "./components/boton_scroll.js";
+import { countDown } from "./components/cuenta_regresiva.js";
 import { MenuHamburguesa } from "./components/menu_hamburgesa.js";
 
 import { alarma, digitalClock } from "./components/reloj_dijital.js";
 import { setupResponsiveMedia } from "./components/setupResponsiveMedia.js";
+import DarkModel from "./components/tema_oscuro.js";
 import { isMobileDevice } from "./helpers/utils.js";
 
 export function App() {
@@ -9,6 +12,14 @@ export function App() {
   digitalClock("#reloj", "#activar-reloj", "#desactivar-reloj");
   alarma("app/assets/alarm.mp3", "#activar-alarma", "#desactivar-alarma");
   setupResponsiveMedia();
+  // Ejemplo de uso
+  countDown(
+    "countdown",
+    "July 28, 1987 12:00:00",
+    "Feliz Cumpleaños Duanly 🖐️"
+  );
+  scrollBtnTop("scroll");
+  DarkModel(".dark-theme-btn", "data-dark");
 }
 
 // Cargar imagen según la conexión y el dispositivo
