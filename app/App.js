@@ -8,6 +8,7 @@ import { MenuHamburguesa } from "./components/menu_hamburgesa.js";
 import { alarma, digitalClock } from "./components/reloj_dijital.js";
 import scrollSpy from "./components/scroll_spia.js";
 import { setupResponsiveMedia } from "./components/setupResponsiveMedia.js";
+import { initControls } from "./components/teclado.js";
 import DarkModel from "./components/tema_oscuro.js";
 import { isMobileDevice } from "./helpers/utils.js";
 
@@ -23,6 +24,7 @@ export function App() {
   birthdayCountdown("duanly", "07-28", "🎉 ¡Feliz Cumpleaños Duanly! 🎂🎊");
   scrollBtnTop("scroll");
   DarkModel(".dark-theme-btn", "data-dark");
+  initControls(".ball", ".stage");
 
   // Crear un contenedor en tu HTML
   const containerId = ".youtube-video-container";

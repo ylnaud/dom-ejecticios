@@ -10,14 +10,8 @@ const DIRECTIONS = {
 let x = 0;
 let y = 0;
 
+// Función para mover la pelota con teclado
 export function moveBall(e, ball, stage) {
-  // Verificar elementos en el DOM o que sean String
-  try {
-    !areStrings(ball, stage);
-  } catch (err) {
-    console.error(err.message);
-  }
-
   const $ball = getElement(ball);
   const $stage = getElement(stage);
 
@@ -46,22 +40,55 @@ export function moveBall(e, ball, stage) {
   $ball.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
 }
 
-export function handleShortcuts(e) {
-  /*  console.log(e.type);
-  console.log(e.key);
-  console.log(e.keyCode);
-  console.log(`ctrl:${e.ctrlKey}`);
-  console.log(`alt:${e.altKey}`);
-  console.log(`shift:${e.shiftKey}`);
-  console.log(e); */
+// Variables para el control táctil
+let touchStartX = 0;
+let touchStartY = 0;
 
-  if (e.key === "a" && e.altKey) {
-    alert("Alert");
-  }
-  if (e.key === "c" && e.altKey) {
-    confirm("Confirm");
-  }
-  if (e.key === "p" && e.altKey) {
-    prompt("Prompt");
-  }
+// Función para habilitar controles en móviles
+export function enableMobileControls(ball, stage) {
+  const $stage = getElement(stage);
+  const $ball = getElement(ball);
+
+  $stage.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  });
+
+  $stage.addEventListener("touchmove", (e) => {
+    if (!touchStartX || !touchStartY) return;
+
+    let touchEndX = e.touches[0].clientX;
+    let touchEndY = e.touches[0].clientY;
+
+    let diffX = touchStartX - touchEndX;
+    let diffY = touchStartY - touchEndY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      // Movimiento horizontal
+      if (diffX > 0) {
+        x--; // Izquierda
+      } else {
+        x++; // Derecha
+      }
+    } else {
+      // Movimiento vertical
+      if (diffY > 0) {
+        y--; // Arriba
+      } else {
+        y++; // Abajo
+      }
+    }
+
+    $ball.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+
+    // Resetear variables de toque
+    touchStartX = 0;
+    touchStartY = 0;
+  });
+}
+
+// Activar controles en PC y móviles
+export function initControls(ball, stage) {
+  document.addEventListener("keydown", (e) => moveBall(e, ball, stage));
+  enableMobileControls(ball, stage);
 }
