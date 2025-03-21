@@ -11,8 +11,4 @@ export default function userDeviceInfo(id) {
   }
 
   const $serviceAgent = getElementById(id);
-
-  if (ua) {
-    console.log("div", $serviceAgent, "\n", id);
-  }
 }

@@ -10,7 +10,7 @@ export default function scrollSpy() {
   const cb = (entries) => {
     entries.forEach((entry) => {
       const id = entry.target.getAttribute("id");
-      console.log(`Sección: ${id}, visible: ${entry.isIntersecting}`);
+      //console.log(`Sección: ${id}, visible: ${entry.isIntersecting}`);
       if (entry.isIntersecting) {
         document
           .querySelector(`a[data-scroll-spy][href="#${id}"]`)

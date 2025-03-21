@@ -24,7 +24,7 @@ export function App() {
   birthdayCountdown("duanly", "07-28", "🎉 ¡Feliz Cumpleaños Duanly! 🎂🎊");
   scrollBtnTop("scroll");
   DarkModel(".dark-theme-btn", "data-dark");
-  initControls(".ball", ".stage");
+  initControls("ball", "stage");
 
   // Crear un contenedor en tu HTML
   const containerId = ".youtube-video-container";
@@ -32,6 +32,7 @@ export function App() {
   const autoplay = false; // Cambia a false si no quieres autoplay
 
   LazyYouTubeVideo(containerId, videoId, false);
+  LazyYouTubeVideo(".youtube", "6IwUl-4pAzc", false);
   userDeviceInfo("user-device");
   scrollSpy();
 }
