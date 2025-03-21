@@ -15,6 +15,15 @@
     --main-modal-color: rgba(247, 222, 30, 0.85);
     --secund-modal-color: rgba(34, 34, 34, 0.85);
     --container-width: 1200px;
+    --espaciado: 20px;
+    --tamano-fuente: 18px;
+    /* Variables para personalizar los tamaños de texto */
+    --tamano-h1: clamp(24px, 5vw, 48px);
+    --tamano-h2: clamp(20px, 4vw, 40px);
+    --tamano-h3: clamp(18px, 3.5vw, 32px);
+    --tamano-h4: clamp(16px, 3vw, 28px);
+    --tamano-h5: clamp(14px, 2.5vw, 24px);
+    --tamano-p: clamp(14px, 2vw, 18px);
   }
 }
 
@@ -43,6 +52,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     line-height: 1.6;
+    font-size: var(--tamano-fuente);
     overflow-x: hidden;
   }
 
@@ -106,6 +116,38 @@
   body[data-dark="true"] {
     background-color: var(--secund-modal-color);
     color: var(--main-color);
+  }
+
+  /* Aplicación de tamaños a los títulos */
+  h1 {
+    font-size: var(--tamano-h1);
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: var(--tamano-h2);
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: var(--tamano-h3);
+    font-weight: bold;
+  }
+
+  h4 {
+    font-size: var(--tamano-h4);
+    font-weight: bold;
+  }
+
+  h5 {
+    font-size: var(--tamano-h5);
+    font-weight: bold;
+  }
+
+  /* Tamaño responsivo para los párrafos */
+  p {
+    font-size: var(--tamano-p);
+    line-height: 1.6;
   }
 }
 
@@ -377,7 +419,7 @@
   /* Secciones */
   .section {
     padding: 2rem;
-    padding-top: 5rem;
+    padding-top: 8rem;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
@@ -392,6 +434,7 @@
     z-index: 1;
     top: 0;
     bottom: 0;
+
     left: 0;
     right: 0;
     width: 100%;
@@ -400,7 +443,6 @@
     visibility: hidden;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
-
 
   /* Botón panel */
   .panel-btn {
@@ -480,13 +522,16 @@
     visibility: visible;
   }
 
+  .is-active,
+  .menu a {
+    padding: 0.8rem;
+  }
+
   /*Eventos del teclado*/
   .stage {
-
     display: flex;
     min-height: 50dvh;
     background-color: var(--secund-color);
-
   }
 
   .ball {
@@ -521,7 +566,6 @@
   .hidden {
     visibility: hidden;
     opacity: 0;
-
   }
 
   /*dark-mode*/
@@ -546,9 +590,103 @@
     color: var(--main-color);
   }
 
+  .dark-mode img {
+    transition: opacity 0.3s ease;
+  }
+
+  .youtube-video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    /* Relación de aspecto 16:9 */
+    background: #000;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .youtube-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .youtube-video-container .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  /*ScrollSpy*/
+
+  @media screen and (min-width:1024px) {
+    body {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      grid-template-rows: 4rem auto;
+      grid-template-areas:
+        "header header"
+        "main panel"
+
+    }
+
+
+    main {
+      grid-area: main;
+    }
+
+    .header {
+      grid-area: header;
+      height: 10vh;
+    }
+
+    .panel {
+
+      grid-area: panel;
+      position: sticky;
+      top: 7rem;
+
+      align-self: flex-start;
+      justify-content: flex-start;
+      background-color: var(--secund-color);
+      visibility: visible;
+      opacity: 1;
+
+    }
 
 
 
+    .menu {
+      justify-content: start;
+    }
 
+    .menu a {
+      font-size: 1.4rem;
+      text-align: end;
+      padding: .75rem;
+    }
 
+    .menu a:hover,
+    .menu a.is-active {
+      color: var(--secund-color);
+      background-color: var(--main-color);
+    }
+
+    .scroll-top-btn {
+      right: initial;
+      left: calc(4.25rem + 1vw);
+    }
+
+    .panel-btn {
+      z-index: 2;
+      visibility: hidden;
+    }
+
+  }
 }

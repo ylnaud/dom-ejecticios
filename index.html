@@ -1,40 +1,42 @@
-<!DOCTYPE html data-dark="true">
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JavaScript</title>
+  <meta name="description" content="Ejercicios del dom con Vanilla Javascript type module" />
 
   <link rel="stylesheet" href="app/assets/style.css" />
 </head>
 
-<body>
+<body data-dark="true">
   <!-- header -->
   <header class="header">
     <h1>Ejercicios del Dom</h1>
   </header>
   <!--Button hamburger-->
-  <button class="flex-col-center panel-btn hamburger hamburger--vortex" type="button">
+  <button role="button" aria-label="menu" class="flex-col-center panel-btn hamburger hamburger--vortex" type="button">
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
   </button>
   <!--Panel Menu-->
-  <aside class="panel">
-    <nav class="menu flex-col-space-evenly">
-      <a href="#section1">Reloj Digital y Alarmar Sonora</a>
-      <a href="#section2">Eventos del teclado</a>
-      <a href="#section3">Cuenta Regresiva</a>
-      <a href="#section4">Section 4</a>
-      <a href="#section5">Responsive con JavaScript</a>
-      <a href="#section6">Optimización Móvil con Vanilla JS</a>
+  <aside class="panel" role="menu">
+    <nav class="menu flex-col-space-evenly" role="menubar">
+      <a role="menuitem" href="#section1" data-scroll-spy>Reloj Digital y Alarmar Sonora</a>
+      <a role="menuitem" href="#section2" data-scroll-spy>Eventos del teclado</a>
+      <a role="menuitem" href="#section3" data-scroll-spy>Cuenta Regresiva</a>
+      <a role="menuitem" href="#section4" data-scroll-spy>Iframe Videos</a>
+      <a role="menuitem" href="#section5" data-scroll-spy>Responsive con JavaScript</a>
+      <a role="menuitem" href="#section6" data-scroll-spy>Optimización Móvil con Vanilla JS</a>
+      <a role="menuitem" href="#section7" data-scroll-spy>Detección de Dispositivos</a>
     </nav>
   </aside>
 
   <!--Main-->
   <main>
-    <section id="section1" class="section">
+    <section id="section1" class="section" data-scroll-spy>
       <h2>Reloj Digital y Alarmar Sonora</h2>
       <div>
         <button id="activar-reloj" class="btn-clock">Iniciar Reloj</button>
@@ -46,31 +48,44 @@
       </div>
       <div class="reloj" id="reloj"></div>
     </section>
-    <section id="section2" class="section">
+    <section id="section2" class="section" data-scroll-spy>
       <h2>Eventos Del Teclado</h2>
       <article class="stage">
         <div class="ball"></div>
       </article>
     </section>
-    <section id="section3" class="section">
-      <h2>Cuenta Regresiva</h2>
-      <div id="countdown"></div>
+    <section id="section3" class="section" data-scroll-spy>
+      <h2>Cuenta Regresiva </h2>
+      <ul>
+        <li>Miguel</li>
+        <li>Ylnaud</li>
+      </ul>
+      <div id="miguel"></div>
+      <div id="duanly"></div>
+
     </section>
-    <section id="section4" class="section">
-      <h2>Section 4</h2>
+    <section id="section4" class="section" data-scroll-spy>
+      <h2>Iframe Videos</h2>
+      <div class="youtube-video-container">
+        <div class="play-button">▶</div>
+      </div>
     </section>
-    <section id="section5" class="section">
+    <section id="section5" class="section" data-scroll-spy>
       <h2>Responsive con JavaScript</h2>
       <div id="youtube"></div>
       <div id="gmaps"></div>
     </section>
-    <section id="section6" class="section">
+    <section id="section6" class="section" data-scroll-spy>
       <div id="optimizacion"></div>
       <img id="responsive-image" src="" alt="Cargando imagen..." />
     </section>
+    <section id="section7" class="section" data-scroll-spy>
+      <h2>Detección de Dispositivos <br />(User Argent)</h2>
+      <div id="user-device"></div>
+    </section>
   </main>
-  <button id="scroll" class="scroll-top-btn hidden">&#11014</button>
-  <button class="dark-mode dark-theme-btn ">
+  <button role="button" aria-label="scroll top" id="scroll" class="scroll-top-btn hidden">&#11014</button>
+  <button aria-label="dark" role="button" class="dark-mode dark-theme-btn ">
     <img src="app/assets/gafas.svg" alt="sol" />
   </button>
 
